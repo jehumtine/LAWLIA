@@ -19,8 +19,6 @@ Welcome to LAWLIA, the innovative framework that bridges the worlds of law and c
 
 At its core, LAWLIA is founded on the profound realization that legal problems, by their inherent nature, are fundamentally computational challenges. These challenges entail the meticulous evaluation of factual inputs against an ever-expanding body of legal rules and principles, a sort of legal computational machine to output precise verdicts or resolutions. LAWLIA accentuates this computational essence by embracing the concept that the law itself is, in essence, a language – one that defines and regulates human behavior through a structured framework of rules, procedures, and precedents.
 
-Lawlia is not merely a language for legal discourse but a sophisticated computational framework that intrinsically embodies the very nature of law – a system of regulated and reproducible governance over complex human interactions.
-
 This GitHub repository hosts the LAWLIA code, which is designed to be a pioneering computational legal grammar that transcends traditional legal discourse, embracing mathematical precision and objectivity. LAWLIA's computational approach revolutionizes the legal domain, underpinning the development of intelligent autonomous agents capable of delivering accurate legal outcomes.
 
 ## Key Concepts
@@ -31,27 +29,21 @@ In LAWLIA, "truth values" are the standard of measure. These values are real num
 
 ### Syntactical Computation
 
-At the core of LAWLIA lies "syntactical computation." Legal constructs and statements transcend linguistic abstraction and assume the role of mathematical variables. Through rigorous mathematical derivations, LAWLIA discerns the conditions under which legal assertions hold true or falter. It leverages mathematical precision to assess the boundaries of legal claims, revealing scenarios where these claims may deviate from their established truth values.
-Lawlia's syntactical grammar is inherently computational. It is meticulously structured to capture legal nuances and facilitate precise analysis. Here are five examples of sentences in Lawlia's computational grammar:
-
-1. `(party) enters into a contract with (party) under the (governing_law).`
+Lawlia's syntactical computation is the process by which legal statements, arguments, and constructs are distilled into a structured, mathematical format. It involves the transformation of natural language expressions into a formal computational representation. This transformation eradicates linguistic ambiguity and facilitates rigorous analysis based on defined rules and operations.
+1. `(party) Mtine enters into a contract with Chansa(party) under the English Contract Law (governing_law).`
     
     - This sentence defines the fundamental structure of a contractual relationship, specifying the parties involved and the governing law.
-2. `In case of (event), (party) shall be liable for (penalty).`
+2. `In case of Fire(event), Mwansa (party) shall be liable for Damages (penalty).`
     
     - This sentence outlines a contingency within a contract, defining the consequences in the event of a specified occurrence.
-3. `The (court_name) shall have jurisdiction over disputes arising from this contract.`
+3. `The (court_name) local court shall have jurisdiction over disputes arising from this contract.`
     
     - This sentence establishes the jurisdiction of a particular court concerning contractual disputes.
 4. `This (document_type) is hereby executed by (party) on (date).`
     
     - It signifies the formal execution of a legal document by a party on a specific date.
-5. `Notwithstanding any provision herein, (exception).`
-    
-    - This sentence introduces an exception or override to a previously defined legal provision.
-The above example illustrate the resulting sentences or ideas or verdicts formed after an autonomous agent uses lawlia for legal reasoning.
-Lawlia stands as a testament to the convergence of legal reasoning and computational prowess. It is a pioneering computational legal grammar that transcends traditional legal discourse, embracing mathematical precision and objectivity. With its adherence to truth values and syntactical computation, Lawlia promises to revolutionize the legal domain, underpinning the development of intelligent autonomous agents capable of delivering accurate legal outcomes. In an era where information technologies reshape the legal landscape, Lawlia serves as both guide and beacon, illuminating the path toward computational jurisprudence.
-
+5. `Notwithstanding any provision herein, (exception)`.
+In each of these examples, Lawlia's computational grammar transforms complex legal concepts into a structured and formal representation. The use of parentheses denotes the roles and relationships of entities, actions, and attributes within the legal statement. This syntactical computation facilitates precise legal analysis, enabling Lawlia to perform tasks like truth assessment, precedent benchmarking, and decision-making based on mathematical rigor.
 ### Leveraging Large Language Models (LLMs)
 
 The development of LAWLIA involves two distinct yet complementary approaches. The first entails the collaborative efforts of experts in computer science and legal professionals. This collaborative endeavor dissects legal cases, extracting computational information embedded within them. From this information, LAWLIA constructs a systematic framework of classes, functions, and rules, each representing different branches of law and various legal scenarios.
@@ -61,49 +53,18 @@ The second approach leverages the capabilities of Large Language Models (LLMs). 
 ### Classes, Functions, and Legal Scenarios
 
 LAWLIA's modular design revolves around the concept of classes, functions, and rules. These elements encapsulate different branches of law and various legal scenarios. Each class represents a specific legal domain, while functions within these classes handle different legal scenarios or permutations. Class variables hold the required information for a case within a specific legal branch to be solved.
-## How LAWLIA Works
 
-### The Functioning of the LAWLIA Legal Code
-
-**Syntactical Computation:** Lawlia's syntactical computation is the process by which legal statements, arguments, and constructs are distilled into a structured, mathematical format. It involves the transformation of natural language expressions into a formal computational representation. This transformation eradicates linguistic ambiguity and facilitates rigorous analysis based on defined rules and operations.
-
-**Examples of Sentences in Lawlia's Computational Grammar:**
-
-1. _Contract Formation Statement:_
-    
-    - Natural Language: "Party A and Party B entered into a contract for the sale of real estate."
-    - Lawlia Computational Syntax: `(party A) entered into a (contract) with (party B) for the (sale) of (real estate).`
-2. _Tort Liability Assertion:_
-    
-    - Natural Language: "The plaintiff alleges that the defendant's negligence caused the accident."
-    - Lawlia Computational Syntax: `(plaintiff) alleges that (defendant)'s (negligence) caused the (accident).`
-3. _Constitutional Interpretation:_
-    
-    - Natural Language: "The First Amendment protects freedom of speech."
-    - Lawlia Computational Syntax: `(First Amendment) protects (freedom of speech).`
-4. _Criminal Law Charge:_
-    
-    - Natural Language: "The accused is charged with first-degree murder."
-    - Lawlia Computational Syntax: `(accused) is charged with (first-degree murder).`
-5. _Property Rights Declaration:_
-    
-    - Natural Language: "The landowner has exclusive rights to the property."
-    - Lawlia Computational Syntax: `(landowner) has (exclusive rights) to the (property).`
-
-In each of these examples, Lawlia's computational grammar transforms complex legal concepts into a structured and formal representation. The use of parentheses denotes the roles and relationships of entities, actions, and attributes within the legal statement. This syntactical computation facilitates precise legal analysis, enabling Lawlia to perform tasks like truth assessment, precedent benchmarking, and decision-making based on mathematical rigor.
-Lawlia's modular design revolves around the concept of classes, functions, and rules. These elements encapsulate different branches of law and various legal scenarios. Here's a brief overview:
 
 - **Classes:** Lawlia defines distinct classes for various branches of law, such as contract law, tort law, criminal law, and more. Each class encompasses the rules and legal constructs specific to that domain.
     
 - **Functions:** Functions within Lawlia represent different legal scenarios or permutations that can occur within a particular branch of law. These functions encapsulate the logic and decision-making processes necessary to address legal issues.
     
 - **Class Variables:** Class variables within Lawlia hold the required information for a case within a specific legal branch to be solved. They serve as input data that Lawlia utilizes to provide legal verdicts or decisions.
-At the heart of LAWLIA lies its ability to bring mathematical precision to the inherently nuanced world of legal discourse. This precision is achieved through a syntactical computation, which forms the backbone of the LAWLIA computational legal grammar. Legal statements, arguments, and constructs are distilled into a structured, mathematical format, eradicated of linguistic ambiguity, and facilitating rigorous analysis based on defined rules and operations.
 
 ## Using LAWLIA for Legal Queries
 
 LAWLIA's predefined classes and syntactical grammar for various legal domains enable autonomous agents to address general legal queries systematically. By inputting relevant case details and legal information, the agent harnesses LAWLIA's computational power to analyze legal scenarios, assess compliance with legal standards, and provide informed legal responses.
-In conclusion, Lawlia stands as a computational legal grammar that bridges the realms of law and computation. Its syntactical computation ensures mathematical precision in legal reasoning, while LLMs empower it to grow and evolve continuously. By embracing the inherent computational nature of legal problems, Lawlia redefines how legal discourse is structured and how legal outcomes are determined, ushering in a new era of computational jurisprudence.
+In conclusion, Lawlia stands as a computational legal grammar that bridges the realms of law and computation.
 
 illustration of how an autonomous agent could use Lawlia for general legal queries by providing sample prompts and showcasing how Lawlia's computational legal framework processes these queries. These prompts cover various aspects of law, demonstrating Lawlia's versatility in handling diverse legal questions:
 
@@ -159,7 +120,7 @@ _Agent's Use of Lawlia:_
 
 In these examples, the autonomous agent seamlessly integrates Lawlia into its decision-making process. Lawlia's predefined classes and syntactical grammar for various legal domains enable the agent to address general legal queries systematically. By inputting relevant case details and legal information, the agent harnesses Lawlia's computational power to analyze legal scenarios, assess compliance with legal standards, and provide informed legal responses.
 
-below is not a hard coded aspect of the computational language rather a way in which an autonomous agent can use the predifined structure of LAWLIA to reason, not code to be run but a reasoning process withing the framework of lawlia:
+Below is not a hard coded aspect of the computational language rather a way in which an autonomous agent can use the predifined structure of LAWLIA to reason, not code to be run but a reasoning process withing the framework of lawlia:
 
 ```python
 # Import the Lawlia classes and functions (simplified representation)
