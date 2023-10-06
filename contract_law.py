@@ -534,6 +534,74 @@ class ContractLaw:
             "Key Clauses": self.get_all_contract_clauses(),
         }
         return contract_summary
+    
+
+    def handle_unilateral_contract(self, offer_details, performance, offeree):
+        """
+        Handle a unilateral contract case.
+
+        :param offer_details: Details of the offer, including the terms and conditions.
+        :param performance: The act performed by the offeree.
+        :param offeree: The party who performed the act.
+
+        :return: Result of the unilateral contract case.
+        """
+        # Check if the offer_details, performance, and offeree are provided and valid.
+        if offer_details and performance and offeree:
+            # Evaluate the offer based on the provided details.
+            # Here, you can analyze the offer details and determine if it constitutes a unilateral contract.
+            # If it does, you can check if the offeree has performed as required.
+            # If the performance condition is met, return the outcome as per the offer.
+            # Otherwise, indicate that the performance condition was not met.
+            # You may also handle cases where there is no intent to create legal relations, if necessary.
+            
+            # Example logic:
+            if offer_details["intent_to_create_legal_relations"]:
+                if performance == offer_details["required_performance"]:
+                    return offer_details["outcome"]
+                else:
+                    return "Performance condition not met."
+            else:
+                return "No intent to create legal relations."
+        else:
+            return "Invalid input or missing information."
+
+    def analyze_collateral_contract(self, oral_statement, main_contract_terms, main_contract_breach):
+        """
+        Analyze a case involving a collateral contract.
+
+        :param oral_statement: The oral statement made as part of the collateral contract.
+        :param main_contract_terms: The terms of the main contract.
+        :param main_contract_breach: Indicates whether there was a breach of the main contract.
+
+        :return: Result of the collateral contract case analysis.
+        """
+        # Check if the oral_statement, main_contract_terms, and main_contract_breach are provided and valid.
+        if oral_statement and main_contract_terms and main_contract_breach is not None:
+            # Evaluate the case based on the provided information.
+            # Determine if the oral statement constitutes a collateral contract.
+            # Check if there was a breach of the main contract.
+            # If there was a breach and the oral statement induced the main contract, the party making the statement may be held liable.
+            # Return a detailed analysis of the case.
+
+            # Example logic:
+            analysis_result = {
+                "Collateral Contract Statement": oral_statement,
+                "Main Contract Terms": main_contract_terms,
+                "Breach of Main Contract": main_contract_breach,
+                "Analysis": None,
+            }
+
+            if main_contract_breach:
+                analysis_result["Analysis"] = "The party making the oral statement in the collateral contract is liable."
+            else:
+                analysis_result["Analysis"] = "No liability in the collateral contract case."
+
+            return analysis_result
+        else:
+            return "Invalid input or missing information."
+
+
 
     def __str__(self):
         """
