@@ -1,9 +1,64 @@
 import openai
+import time
+import os
+import PyPDF2
+from transformers import AutoTokenizer
+from pathlib import Path
+from tqdm import tqdm
+import re
+import json
+
+tokenizer = AutoTokenizer.from_pretrained("nomic-ai/gpt4all-falcon")
+file_path = '/home/jehu/Documents/law data/data/Contract Law Best Book.pdf'
+
+desired_runs = 55
+one_hour_in_seconds = 3600
+time_interval = one_hour_in_seconds / desired_runs
 
 # openai.log = "debug"
 openai.api_key = "sk-6fIbSjOMAOKeMrKj9SpR5u7xJWZ80eBTBq0epAaohPwBdiEK"
 openai.api_base = "https://api.chatanywhere.com.cn/v1"
 
+def read_pdf(file_path):
+    text = ""
+    with open(file_path, "rb") as file:
+        reader = PyPDF2.PdfReader(file)
+        for page_num in range(len(reader.pages)):
+            page = reader.pages[page_num]
+            text += page.extract_text()
+    return text
+
+def tokenize(text):
+    enc = tokenizer.encode(text)
+    return enc
+
+def chunks(lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+def submit_to_llm(chunk, retries=3):
+    for i in range(retries):
+        try:
+            messages = [{'role': 'user', 'content': template + " Legal Text: "+legal_text}]
+            print(gpt_35_api_stream(messages))
+            print(messages)
+
+            response = llm_chain.run(chunk.strip())
+            # Extract JSON string from between back-ticks
+            if is_json(response):
+                print(response)
+                return json.loads(response)
+            else:
+                match = re.search(r'`(.*?)`', response, re.S)
+                if match and is_json(match.group(1)):
+                    print(f"Attempt {i + 1} failed. Retrying...")
+                    return json.loads(match.group(1))  # assuming you want to return the JSON data
+                else:
+                    print("Request failed:")
+                    print(response)
+        except requests.exceptions.RequestException as e:
+            continue
+    print("Max retries exceeded. Skipping this chunk.")
+    return None
 
 
 # non-streaming response
@@ -41,8 +96,14 @@ def gpt_35_api_stream(messages: list):
 
 if __name__ == '__main__':
     template = '''
-        Task:You are an API that returns a python function when presented with legal information the aim of you making a python function is to complete where necessary
-        the legal computational grammar known as lawlia. Lawlia is used to analyse legal cases so after presented with information prepare a function that can address that case and in the comments for the function indicate the variables that must be added to the class if need be. Lawlia has a class called contract law presented below:
+        Task:You are an API that Generates a description of a function which will be added to the computational grammar. a description of that function would be clear and concise, labelling what the expected input should be and the expected output and how that python function from the lawlia will transform the input to output 
+        your output should be in this format:
+        [function name]
+        [inputs:]
+        step by step procedures:
+        [output:]
+
+        Lawlia has a class called contract law presented below:
         class ContractLaw:
     def __init__(self, contract_name, parties, effective_date, expiration_date, terms, governing_law):
         """
@@ -307,14 +368,15 @@ if __name__ == '__main__':
         self.choice_of_forum = forum_description
 
     def assert_arbit'''
-    legal_text = """Form is not an aspect of contract law that most ALevel syllabuses now concern themselves with. However, it can in some instances be an important issue, and it is therefore worth knowing at least the basic rules. It is not, however, ever likely to be a major part of any A Level contract exam.
-    It is generally fair to say that with the majority of contracts the form in which they are made is not an issue. We make contracts every day, and probably all day long, without ever contemplating their legal significance and certainly without worrying about the specific form in which we have created them.
-    We can distinguish between ‘simple’ contracts and ‘speciality’ contracts.
-    In the case of simple contracts, these can be made orally or in writing, or possibly even be implied by conduct. An example is where an auctioneer completes a contract at an auction by the fall of his hammer (although this might also be accompanied by words such as ‘sold to the lady in the red dress’).
-    With contracts made in this way, then there is no requirement for there to be any particular form and evidence of compliance with the basic rules of formation will be sufficient to make such contracts enforceable in law.
-    However, with speciality contracts, these need to have been created in a specific form in order to gain their validity: the ‘form’ in question will be to do with being written or evidenced in writing, and this formal requirement indicates that a higher level of proof of the existence of the contract is required, and so speciality contracts are concerned with more significant property such as land or other transferable interests.
-    Speciality contracts come in one of three types: agreements which must be created in the form of a deed, agreements which must be made in writing, agreements which need only to be evidenced in writing, e.g. in a memorandum"""
 
-    messages = [{'role': 'user', 'content': template + " Legal Text: "+legal_text}]
-    print(gpt_35_api_stream(messages))
-    print(messages)
+
+
+    for _ in range(desired_runs):
+        legal_text = """Form is not an aspect of contract law that most ALevel syllabuses now concern themselves with. However, it can in some instances be an important issue, and it is therefore worth knowing at least the basic rules. It is not, however, ever likely to be a major part of any A Level contract exam.
+        It is generally fair to say that with the majority of contracts the form in which they are made is not an issue. We make contracts every day, and probably all day long, without ever contemplating their legal significance and certainly without worrying about the specific form in which we have created them.
+        We can distinguish between ‘simple’ contracts and ‘speciality’ contracts.
+        In the case of simple contracts, these can be made orally or in writing, or possibly even be implied by conduct. An example is where an auctioneer completes a contract at an auction by the fall of his hammer (although this might also be accompanied by words such as ‘sold to the lady in the red dress’).
+        With contracts made in this way, then there is no requirement for there to be any particular form and evidence of compliance with the basic rules of formation will be sufficient to make such contracts enforceable in law.
+        However, with speciality contracts, these need to have been created in a specific form in order to gain their validity: the ‘form’ in question will be to do with being written or evidenced in writing, and this formal requirement indicates that a higher level of proof of the existence of the contract is required, and so speciality contracts are concerned with more significant property such as land or other transferable interests.
+        Speciality contracts come in one of three types: agreements which must be created in the form of a deed, agreements which must be made in writing, agreements which need only to be evidenced in writing, e.g. in a memorandum"""
+        submit_to_llm()

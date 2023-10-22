@@ -365,6 +365,78 @@ class ContractLaw:
         else:
             return "Contract is in effect."
 
+    def analyze_intention(self, case_text):
+         # Parsing the case text and identifying key elements
+        # The model should extract relevant information related to the offer, acceptance, consideration, and intention to create legal relations.
+        # Use natural language understanding capabilities to recognize legal terminology and context.
+
+        # Analyzing the intention to create a legally enforceable agreement
+        # The model should assess whether the case text contains elements that suggest a genuine intention to create a binding contract.
+        # Analyze statements, actions, or circumstances that indicate the parties' intent.
+
+        # Applying standard contract law principles
+        # Based on the extracted information, the model should apply standard contract law principles to evaluate the intention.
+        # Consider precedents, legal precedents, and legal standards to provide a reasoned analysis.
+
+        # Formulating the response
+        # The model should provide a structured response, summarizing the analysis and reasoning.
+        # The response can indicate whether the case exhibits an intention to create a legally enforceable agreement and why.
+        # Parse the case text and identify key elements
+        key_elements = self.parse_case_text(case_text)
+
+        # Analyze the intention to create a legally enforceable agreement
+        intention_analysis = self.analyze_intention_elements(key_elements)
+
+        return intention_analysis
+
+    def analyze_enforceability(self, case_text):
+        # Parsing the case text and identifying key elements
+        # Similar to the analyze_intention function, extract relevant information regarding offer, acceptance, consideration, and legal capacity.
+
+        # Assessing enforceability
+        # Evaluate whether the agreement in the case satisfies the essential requirements for enforceability.
+        # The model should determine if there was a valid offer, acceptance, adequate consideration, and capacity to contract.
+
+        # Applying legal standards
+        # Apply established legal standards and precedents to assess the enforceability.
+        # Consider how the case aligns with well-recognized principles of contract law.
+
+        # Formulating the response
+        # Provide a structured response summarizing the analysis and insights into the enforceability of the agreement.
+        # Offer reasoning based on contract law principles.
+        # Parse the case text and identify key elements
+        key_elements = self.parse_case_text(case_text)
+
+        # Assess the enforceability of the agreement
+        enforceability_analysis = self.analyze_enforceability_elements(key_elements)
+
+        return enforceability_analysis
+    def parse_case_text(self, case_text):
+        # Implement case text parsing logic to extract relevant elements
+        # You can use regular expressions, natural language processing, or other techniques to identify key details in the case text.
+        key_elements = {}  # Replace with the actual parsed elements
+
+        return key_elements   
+
+    def analyze_intention_elements(self, key_elements):
+        # Implement reasoning steps to analyze intention based on key elements
+        # Evaluate statements, actions, or circumstances indicating intent.
+        # Consider legal standards for forming intent in a contract.
+
+        # Replace with actual analysis logic
+        intention_analysis = "The analysis of intention suggests that..."
+
+        return intention_analysis
+
+    def analyze_enforceability_elements(self, key_elements):
+        # Implement reasoning steps to assess enforceability based on key elements
+        # Evaluate offer, acceptance, consideration, and legal capacity.
+        # Consider established legal standards for enforceability.
+
+        # Replace with actual analysis logic
+        enforceability_analysis = "The analysis of enforceability indicates that..."
+
+        return enforceability_analysis         
     def get_contract_details(self):
         """
         Get all details of the contract as a dictionary.
